@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "gatronova",
+  "description": "Gatronova internal Claude plugins: brand kit and shared skills.",
+  "owner": {
+    "name": "Gatronova",
+    "email": "akumar4fj@gatronova.com"
+  },
+  "plugins": [
+    {
+      "name": "gatronova-brand",
+      "description": "Applies Gatronova's official brand identity (logo, colors, fonts, flag motif) to documents, decks, spreadsheets, PDFs, and web apps.",
+      "source": "./",
+      "category": "design"
+    }
+  ]
+}

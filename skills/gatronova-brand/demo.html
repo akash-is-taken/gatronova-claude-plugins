@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gatronova Tokens Demo</title>
+<link rel="stylesheet" href="assets/tokens.css">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 var(--gn-space-6); }
+
+  /* Nav */
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; border-bottom: 1px solid var(--gn-border); }
+  .nav img { height: 32px; width: auto; display: block; }
+  .nav ul { display: flex; gap: var(--gn-space-8); list-style: none; margin: 0; padding: 0; }
+  .nav a { font-family: var(--gn-font-heading); font-weight: 700; text-decoration: none; color: var(--gn-navy); position: relative; padding-bottom: 6px; }
+  .nav a.active::after { content: ""; position: absolute; left: 0; bottom: -4px; width: 100%; height: 5px; background: var(--gn-sky); clip-path: var(--gn-flag-clip); }
+
+  /* Hero: 62/38 asymmetric split */
+  .hero { display: grid; grid-template-columns: 62fr 38fr; gap: var(--gn-space-12); padding: var(--gn-space-16) 0; align-items: center; }
+  .eyebrow { display: flex; align-items: center; gap: var(--gn-space-2); font-family: var(--gn-font-heading); font-weight: 700; font-size: var(--gn-text-sm); color: var(--gn-navy); text-transform: none; letter-spacing: 0.02em; }
+  .hero h1 { font-size: var(--gn-text-display); margin: var(--gn-space-4) 0; }
+  .hero p { font-size: var(--gn-text-lg); max-width: 34rem; margin: 0 0 var(--gn-space-8); }
+  .hero-art { position: relative; height: 320px; background: var(--gn-navy-15); border-radius: var(--gn-radius-lg); overflow: hidden; }
+  .hero-art .f { position: absolute; background: var(--gn-sky); clip-path: var(--gn-flag-clip); }
+  .hero-art .f1 { right: -40px; bottom: -20px; width: 260px; height: 160px; opacity: .9; }
+  .hero-art .f2 { right: 60px; bottom: 90px; width: 180px; height: 110px; opacity: .45; }
+  .hero-art .f3 { right: 180px; bottom: 170px; width: 110px; height: 70px; background: var(--gn-navy); opacity: .85; }
+  .btn-row { display: flex; gap: var(--gn-space-3); }
+
+  /* Stats: navy band */
+  .stats { padding: var(--gn-space-12) 0; }
+  .stats .wrap { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: var(--gn-space-8); align-items: end; }
+  .stat .gn-flag { margin-bottom: var(--gn-space-2); }
+  .stat .n { font-family: var(--gn-font-heading); font-weight: 700; font-size: var(--gn-text-4xl); line-height: 1; color: #fff; }
+  .stat .n em { font-style: normal; color: var(--gn-sky); }
+  .stat .l { font-family: var(--gn-font-heading); font-weight: 700; font-size: var(--gn-text-sm); color: var(--gn-muted); margin-top: var(--gn-space-2); }
+  .stats h2 { margin: 0 0 var(--gn-space-2); }
+  .stats p { margin: 0; color: var(--gn-color-body); }
+
+  /* Features: 2 cards + callout, uneven */
+  .features { padding: var(--gn-space-16) 0; }
+  .features .grid { display: grid; grid-template-columns: 1fr 1fr 1.3fr; gap: var(--gn-space-6); margin-top: var(--gn-space-8); }
+  .icon-flag { width: 44px; height: 30px; background: var(--gn-sky); clip-path: var(--gn-flag-clip); display: grid; place-items: center; margin-bottom: var(--gn-space-4); }
+  .icon-flag svg { width: 18px; height: 18px; stroke: var(--gn-navy); fill: none; stroke-width: 2.5; margin-top: 4px; }
+  .gn-card h3 { font-size: var(--gn-text-lg); margin: 0 0 var(--gn-space-2); }
+  .gn-card p { margin: 0; font-size: var(--gn-text-sm); }
+  .gn-callout h3 { margin: 0 0 var(--gn-space-2); font-size: var(--gn-text-lg); }
+  .gn-callout p { margin: 0 0 var(--gn-space-4); }
+
+  /* Form + table */
+  .work { padding: var(--gn-space-12) 0 var(--gn-space-16); border-top: 1px solid var(--gn-border); }
+  .work .grid { display: grid; grid-template-columns: 38fr 62fr; gap: var(--gn-space-12); margin-top: var(--gn-space-8); }
+  label { display: block; font-family: var(--gn-font-heading); font-weight: 700; font-size: var(--gn-text-sm); color: var(--gn-navy); margin-bottom: var(--gn-space-1); }
+  input, select { width: 100%; font: inherit; padding: var(--gn-space-3); border: 1px solid var(--gn-border); border-radius: var(--gn-radius-md); background: #fff; color: var(--gn-text); margin-bottom: var(--gn-space-4); }
+  .hint { font-size: var(--gn-text-xs); color: var(--gn-muted); margin: -8px 0 var(--gn-space-4); }
+  table { width: 100%; border-collapse: collapse; font-size: var(--gn-text-sm); }
+  th { font-family: var(--gn-font-heading); text-align: left; color: var(--gn-navy); padding: var(--gn-space-3); border-bottom: 2px solid var(--gn-navy); }
+  td { padding: var(--gn-space-3); border-bottom: 1px solid var(--gn-border); }
+  tr:nth-child(even) td { background: var(--gn-surface); }
+  .badge { display: inline-block; font-family: var(--gn-font-heading); font-weight: 700; font-size: var(--gn-text-xs); padding: 2px 8px; border-radius: var(--gn-radius-sm); background: var(--gn-sky-12); color: var(--gn-navy); }
+  .badge.dark { background: var(--gn-navy); color: #fff; }
+  .bar { height: 8px; background: var(--gn-navy-15); border-radius: 2px; overflow: hidden; }
+  .bar i { display: block; height: 100%; background: var(--gn-navy); }
+  .bar.hot i { background: var(--gn-sky); }
+
+  /* Palette strip */
+  .palette { padding: var(--gn-space-12) 0; background: var(--gn-surface); }
+  .swatches { display: flex; gap: var(--gn-space-2); margin-top: var(--gn-space-6); flex-wrap: wrap; }
+  .sw { flex: 1 1 100px; height: 72px; border-radius: var(--gn-radius-md); border: 1px solid var(--gn-border); display: flex; align-items: flex-end; padding: var(--gn-space-2); font-family: var(--gn-font-mono); font-size: 11px; }
+
+  footer { padding: var(--gn-space-8) 0; }
+  footer .wrap { display: flex; justify-content: space-between; align-items: center; }
+  footer img { height: 24px; width: auto; }
+  footer small { color: var(--gn-muted); }
+
+  @media (max-width: 760px) {
+    .hero, .stats .wrap, .features .grid, .work .grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: var(--gn-text-3xl); }
+    .nav ul { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="wrap nav">
+  <a href="#"><img src="assets/gatronova_logo_full.png" alt="Gatronova"></a>
+  <ul>
+    <li><a class="active" href="#">Overview</a></li>
+    <li><a href="#">Fleet Insights</a></li>
+    <li><a href="#">Reports</a></li>
+    <li><a href="#">Settings</a></li>
+  </ul>
+</header>
+
+<section class="wrap hero">
+  <div>
+    <div class="eyebrow"><span class="gn-flag"></span> Operations Platform</div>
+    <h1>Every Shift, Fully Visible</h1>
+    <p>Live utilisation, incident routing, and shift planning in one workspace. Built for teams that run on tight margins and tighter timelines.</p>
+    <div class="btn-row">
+      <button class="gn-btn gn-btn--primary">Open Dashboard</button>
+      <button class="gn-btn gn-btn--secondary">View Documentation</button>
+    </div>
+  </div>
+  <div class="hero-art" aria-hidden="true">
+    <span class="f f3"></span><span class="f f2"></span><span class="f f1"></span>
+  </div>
+</section>
+
+<section class="stats gn-dark">
+  <div class="wrap">
+    <div>
+      <h2>Where We Stand</h2>
+      <p>Rolling 30-day figures across all active sites. Sky marks the series to watch.</p>
+    </div>
+    <div class="stat"><span class="gn-flag"></span><div class="n">98.<em>4</em>%</div><div class="l">On-Time Delivery Rate</div></div>
+    <div class="stat"><span class="gn-flag"></span><div class="n">1,240</div><div class="l">Shifts Scheduled</div></div>
+    <div class="stat"><span class="gn-flag"></span><div class="n">14 min</div><div class="l">Median Incident Response</div></div>
+  </div>
+</section>
+
+<section class="wrap features">
+  <div class="eyebrow"><span class="gn-flag"></span> What You Get</div>
+  <h2 style="margin:8px 0 0">Built for the Floor, Not the Boardroom</h2>
+  <div class="grid">
+    <div class="gn-card">
+      <div class="icon-flag"><svg viewBox="0 0 24 24"><polyline points="3 17 9 11 13 15 21 7"/></svg></div>
+      <h3>Live Utilisation</h3>
+      <p>Per-asset load and idle time refreshed every 30 seconds. Filter by site, crew, or shift.</p>
+    </div>
+    <div class="gn-card">
+      <div class="icon-flag"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h7"/></svg></div>
+      <h3>Incident Routing</h3>
+      <p>Auto-assign to the nearest qualified responder. Escalation rules per severity.</p>
+    </div>
+    <div class="gn-callout">
+      <h3>Rollout in Under a Week</h3>
+      <p>Import your roster from a spreadsheet, connect one telematics feed, and the first dashboard is live. No integration project required.</p>
+      <a href="#">Read the Onboarding Guide</a>
+    </div>
+  </div>
+</section>
+
+<section class="wrap work">
+  <div class="eyebrow"><span class="gn-flag"></span> Form and Table Components</div>
+  <div class="grid">
+    <form onsubmit="return false">
+      <label for="site">Site</label>
+      <select id="site"><option>Pune North</option><option>Chennai Port</option><option>Ahmedabad Hub</option></select>
+      <label for="crew">Crew Lead</label>
+      <input id="crew" placeholder="Search by name">
+      <div class="hint">Leads with an active certification only.</div>
+      <label for="from">Shift Start</label>
+      <input id="from" type="time" value="06:00">
+      <button class="gn-btn gn-btn--primary" type="submit">Schedule Shift</button>
+    </form>
+    <table>
+      <thead><tr><th>Asset</th><th>Site</th><th>Status</th><th style="width:30%">Utilisation</th></tr></thead>
+      <tbody>
+        <tr><td>Forklift 12</td><td>Pune North</td><td><span class="badge dark">Active</span></td><td><div class="bar"><i style="width:82%"></i></div></td></tr>
+        <tr><td>Reach Truck 4</td><td>Chennai Port</td><td><span class="badge">Idle</span></td><td><div class="bar"><i style="width:31%"></i></div></td></tr>
+        <tr><td>Conveyor B</td><td>Ahmedabad Hub</td><td><span class="badge dark">Active</span></td><td><div class="bar hot"><i style="width:96%"></i></div></td></tr>
+        <tr><td>Pallet Jack 9</td><td>Pune North</td><td><span class="badge">Maintenance</span></td><td><div class="bar"><i style="width:0%"></i></div></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="palette">
+  <div class="wrap">
+    <div class="eyebrow"><span class="gn-flag"></span> Token Palette</div>
+    <div class="swatches">
+      <div class="sw" style="background:#1D1C55;color:#fff">--gn-navy</div>
+      <div class="sw" style="background:#26A9E1;color:#1D1C55">--gn-sky</div>
+      <div class="sw" style="background:#3D3C73;color:#fff">--gn-navy-80</div>
+      <div class="sw" style="background:#100F33;color:#fff">--gn-navy-deep</div>
+      <div class="sw" style="background:#E4E4EE;color:#1D1C55">--gn-navy-15</div>
+      <div class="sw" style="background:#E3F3FB;color:#1D1C55">--gn-sky-12</div>
+      <div class="sw" style="background:#F5F6F8;color:#1D1C55">--gn-surface</div>
+      <div class="sw" style="background:#8A8A99;color:#fff">--gn-muted</div>
+    </div>
+  </div>
+</section>
+
+<footer class="gn-dark">
+  <div class="wrap">
+    <img src="assets/gatronova_logo_white.png" alt="Gatronova">
+    <small>Gatronova</small>
+  </div>
+</footer>
+
+</body>
+</html>

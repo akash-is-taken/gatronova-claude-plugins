@@ -1,0 +1,159 @@
+/* Gatronova brand design tokens. Import once at app root. */
+:root {
+  /* Core brand hues (fixed) */
+  --gn-navy: #1D1C55;
+  --gn-sky: #26A9E1;
+
+  /* Supporting palette */
+  --gn-navy-80: #3D3C73;
+  --gn-navy-15: #E4E4EE;
+  --gn-sky-12: #E3F3FB;
+  --gn-navy-deep: #100F33;
+
+  /* Neutrals */
+  --gn-text: #1A1A1A;
+  --gn-bg: #FFFFFF;
+  --gn-surface: #F5F6F8;
+  --gn-border: #E5E7EB;
+  --gn-muted: #8A8A99;
+
+  /* Semantic aliases: use these in components, not raw hues */
+  --gn-color-primary: var(--gn-navy);
+  --gn-color-primary-hover: var(--gn-navy-80);
+  --gn-color-accent: var(--gn-sky);
+  --gn-color-link: var(--gn-navy);
+  --gn-color-link-underline: var(--gn-sky);
+  --gn-color-heading: var(--gn-navy);
+  --gn-color-body: var(--gn-text);
+  --gn-color-panel: var(--gn-navy-15);
+  --gn-color-callout: var(--gn-sky-12);
+  --gn-color-on-dark: #FFFFFF;
+
+  /* Typography */
+  --gn-font-heading: Calibri, Carlito, "Segoe UI", system-ui, sans-serif;
+  --gn-font-body: Arial, Helvetica, "Liberation Sans", sans-serif;
+  --gn-font-mono: ui-monospace, "Cascadia Code", Consolas, monospace;
+
+  /* Type scale (1.25 ratio, 16px base) */
+  --gn-text-xs: 0.75rem;
+  --gn-text-sm: 0.875rem;
+  --gn-text-base: 1rem;
+  --gn-text-lg: 1.25rem;
+  --gn-text-xl: 1.5625rem;
+  --gn-text-2xl: 1.953rem;
+  --gn-text-3xl: 2.441rem;
+  --gn-text-4xl: 3.052rem;
+  --gn-text-display: 3.815rem;
+
+  /* Spacing (8px grid) */
+  --gn-space-1: 0.25rem;
+  --gn-space-2: 0.5rem;
+  --gn-space-3: 0.75rem;
+  --gn-space-4: 1rem;
+  --gn-space-6: 1.5rem;
+  --gn-space-8: 2rem;
+  --gn-space-12: 3rem;
+  --gn-space-16: 4rem;
+
+  /* Radius: brand shape is angular. Keep radii small. */
+  --gn-radius-sm: 2px;
+  --gn-radius-md: 4px;
+  --gn-radius-lg: 8px;
+
+  /* Signature flag motif: trapezoid clip-path, wider base, angled top edge */
+  --gn-flag-clip: polygon(0 0, 100% 18%, 100% 100%, 0 100%);
+}
+
+/* Dark surfaces: apply .gn-dark to any navy section */
+.gn-dark {
+  --gn-color-heading: #FFFFFF;
+  --gn-color-body: rgba(255, 255, 255, 0.86);
+  --gn-color-link: #FFFFFF;
+  --gn-color-panel: var(--gn-navy-80);
+  --gn-color-callout: var(--gn-navy-80);
+  --gn-bg: var(--gn-navy);
+  --gn-surface: var(--gn-navy-deep);
+  --gn-border: var(--gn-navy-80);
+  --gn-muted: rgba(255, 255, 255, 0.6);
+  background: var(--gn-bg);
+  color: var(--gn-color-body);
+}
+
+/* Base element styles */
+body {
+  font-family: var(--gn-font-body);
+  color: var(--gn-color-body);
+  background: var(--gn-bg);
+  line-height: 1.5;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--gn-font-heading);
+  font-weight: 700;
+  color: var(--gn-color-heading);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+h1 { font-size: var(--gn-text-4xl); }
+h2 { font-size: var(--gn-text-3xl); }
+h3 { font-size: var(--gn-text-2xl); }
+h4 { font-size: var(--gn-text-xl); }
+
+/* Links: navy text, sky underline. Sky text alone fails WCAG AA on white. */
+a {
+  color: var(--gn-color-link);
+  text-decoration: underline;
+  text-decoration-color: var(--gn-color-link-underline);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+a:hover { text-decoration-thickness: 3px; }
+
+/* Flag motif utility. Put on a small block before a heading or stat. */
+.gn-flag {
+  display: inline-block;
+  width: 1.25rem;
+  height: 0.75rem;
+  background: var(--gn-sky);
+  clip-path: var(--gn-flag-clip);
+}
+.gn-flag--lg { width: 3rem; height: 1.75rem; }
+
+/* Buttons */
+.gn-btn {
+  font-family: var(--gn-font-heading);
+  font-weight: 700;
+  font-size: var(--gn-text-base);
+  padding: var(--gn-space-3) var(--gn-space-6);
+  border-radius: var(--gn-radius-md);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: background 120ms, border-color 120ms;
+}
+.gn-btn--primary { background: var(--gn-navy); color: #fff; }
+.gn-btn--primary:hover { background: var(--gn-navy-80); }
+.gn-btn--secondary { background: transparent; color: var(--gn-navy); border-color: var(--gn-navy); }
+.gn-btn--secondary:hover { background: var(--gn-navy-15); }
+.gn-dark .gn-btn--primary { background: #fff; color: var(--gn-navy); }
+.gn-dark .gn-btn--primary:hover { background: var(--gn-navy-15); }
+.gn-dark .gn-btn--secondary { color: #fff; border-color: #fff; }
+.gn-dark .gn-btn--secondary:hover { background: var(--gn-navy-80); }
+
+/* Focus ring: sky, visible on both light and dark */
+:focus-visible { outline: 2px solid var(--gn-sky); outline-offset: 2px; }
+
+/* Callout panel */
+.gn-callout {
+  background: var(--gn-color-callout);
+  color: var(--gn-color-heading);
+  padding: var(--gn-space-4) var(--gn-space-6);
+  border-left: 4px solid var(--gn-sky);
+}
+
+/* Card */
+.gn-card {
+  background: var(--gn-surface);
+  border: 1px solid var(--gn-border);
+  border-radius: var(--gn-radius-lg);
+  padding: var(--gn-space-6);
+  box-shadow: 0 1px 3px rgba(29, 28, 85, 0.08);
+}

@@ -1,0 +1,9 @@
+{
+  "name": "gatronova-brand",
+  "version": "2.0.0",
+  "description": "Applies Gatronova's official brand identity (logo, colors, fonts, flag motif) to documents, decks, spreadsheets, PDFs, and web apps.",
+  "author": {
+    "name": "Gatronova",
+    "email": "akumar4fj@gatronova.com"
+  }
+}
