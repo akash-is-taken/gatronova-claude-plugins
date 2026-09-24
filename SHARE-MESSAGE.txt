@@ -1,0 +1,28 @@
+Hi team, here is the Gatronova brand skill for Claude. Once installed, Claude applies our logo, colors, and fonts to documents, decks, spreadsheets, and web apps automatically. No need to describe the brand each time.
+
+Repo: https://github.com/akash-is-taken/gatronova-claude-plugins
+
+--- Claude Code (2 commands, run once in any terminal) ---
+
+claude plugin marketplace add akash-is-taken/gatronova-claude-plugins
+claude plugin install gatronova-brand@gatronova
+
+Restart Claude Code afterwards. To get future updates:
+
+claude plugin marketplace update gatronova
+claude plugin update gatronova-brand@gatronova
+
+--- Cowork ---
+
+1. Download gatronova-brand.zip from https://github.com/akash-is-taken/gatronova-claude-plugins/releases/latest
+2. Open https://claude.ai/settings/capabilities
+3. Under Skills, click Upload skill and pick the zip
+4. Confirm the gatronova-brand toggle is on, then restart Cowork
+
+If you use both Claude Code and Cowork, do both. If you only use Claude Code, skip the Cowork step so you do not end up with two copies.
+
+--- Test it ---
+
+Ask Claude for "a one-page Gatronova proposal as a Word doc" or "a Gatronova dashboard landing page in React". Expect navy #1D1C55, sky blue #26A9E1, Calibri headings, Arial body, our flag motif, and the right logo variant for the background.
+
+Questions: Akash Kumar (akumar4fj@gatronova.com)
