@@ -1,7 +1,7 @@
 ---
 name: gatronova-brand
-version: 2.0.0
-description: Applies Gatronova's official brand identity (logo, colors, fonts, flag motif) to any official deliverable or product surface created for the organization. Use whenever creating a Word document, PowerPoint deck, PDF, Excel spreadsheet, website, web app, landing page, dashboard UI, HTML artifact, React/Vue/Svelte component, email template, or design system for Gatronova, or anything meant to carry the Gatronova name - reports, memos, letters, proposals, pitch decks, one-pagers, invoices, dashboards, templates, marketing sites, internal tools, customer portals. Also use if the user mentions "Gatronova," "our brand," "company colors," "our logo," "on-brand," "brand tokens," "our design system," or "official document/template" without naming the skill. Consult alongside (not instead of) the relevant format skill (docx/pptx/pdf/xlsx) or frontend/artifact skill - this skill supplies the branding, the other supplies the mechanics. For web work read references/web.md and ship assets/tokens.css or assets/tailwind.preset.js.
+version: 2.0.1
+description: Applies Gatronova's official brand identity (logo, colors, fonts, flag motif) to official deliverables and product surfaces. Use when creating a Word document, PowerPoint deck, PDF, Excel spreadsheet, website, web app, landing page, dashboard UI, HTML artifact, React/Vue/Svelte component, or email template for Gatronova, or anything carrying the Gatronova name - reports, proposals, pitch decks, invoices, dashboards, templates, marketing sites, internal tools. Also use if the user says "Gatronova," "our brand," "company colors," "our logo," "on-brand," "brand tokens," or "official document." Consult alongside the relevant format skill (docx/pptx/pdf/xlsx) or frontend skill - this supplies branding, the other supplies mechanics. For web work read references/web.md and ship assets/tokens.css or assets/tailwind.preset.js.
 ---
 
 # Gatronova Brand Kit
