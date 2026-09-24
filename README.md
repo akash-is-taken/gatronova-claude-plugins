@@ -9,7 +9,7 @@ Internal Claude Code plugin marketplace for Gatronova. Currently ships one plugi
 Run these two commands once in any terminal:
 
 ```bash
-claude plugin marketplace add REPO_URL
+claude plugin marketplace add https://github.com/akash-is-taken/gatronova-claude-plugins.git
 ```
 
 ```bash
